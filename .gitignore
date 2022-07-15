@@ -1,0 +1,10 @@
+.idea
+chrome-linux
+chrome-linux.zip
+node-v16.14.2-linux-x64.tar
+node-v16.14.2-linux-x64
+node-v16.14.2-linux-x64.tar.xz
+run-demo-test.sh
+example/node-chromium-test/node_modules
+example/node-chromium-test/package-lock.json
+example/node-chromium-test/example.png
