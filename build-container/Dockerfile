@@ -20,7 +20,7 @@ RUN  apt install -y  python3 python3-pip python3-dev git \
 ADD ./install-build-puppeteer-dependencies.sh /install-build-puppeteer-dependencies.sh
 ADD ./install-build-deps.sh /install-build-deps.sh
 ADD ./install-build-deps.py /install-build-deps.py
-ADD ./setup-supervisor.sh /setup-supervisor.sh
+#ADD ./setup-supervisor.sh /setup-supervisor.sh
 RUN chmod a+x /install-build-deps.py
 
 RUN  bash /install-build-puppeteer-dependencies.sh
