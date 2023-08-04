@@ -12,3 +12,4 @@ build-container/install-build-deps.py
 build-container/install-build-deps.sh
 build-container/run-demo-test.sh
 run-demo-test.sh
+var

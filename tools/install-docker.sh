@@ -1,37 +1,45 @@
 #!/bin/bash
 
 set -exu
-
-if [ ! "$BASH_VERSION" ]; then
-  echo "Please do not use sh to run this script ($0), just execute it directly" 1>&2
-  exit 1
-fi
-
 __DIR__=$(
   cd "$(dirname "$0")"
   pwd
 )
+__PROJECT__=$(
+  cd ${__DIR__}/../
+  pwd
+)
 cd ${__DIR__}
-sudo apt-get update -y
 
-# reference
-# https://docs.docker.com/engine/install/debian/
+mkdir -p ${__PROJECT__}/var
 
-sudo apt-get install -y \
-  ca-certificates \
-  curl \
-  gnupg \
-  lsb-release
+cd ${__PROJECT__}/var
 
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
+curl -fsSL https://get.docker.com -o get-docker.sh
 
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+mirror=''
+while [ $# -gt 0 ]; do
+  case "$1" in
+  --mirror)
+    mirror="$2"
+    shift
+    ;;
+  --*)
+    echo "Illegal option $1"
+    ;;
+  esac
+  shift $(($# > 0 ? 1 : 0))
+done
 
-sudo apt-get update -y
-sudo apt-get install -y  docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
-# sudo usermod -aG docker $USER
+case "$mirror" in
+china)
+  sed -i "s@https://mirrors.aliyun.com/docker-ce@https://mirrors.ustc.edu.cn/docker-ce@g" get-docker.sh
+  sed -i "s@Aliyun)@china)@g" get-docker.sh
+  sh get-docker.sh --mirror china
+  exit 0
+  ;;
+*)
+  sh get-docker.sh
+  exit 0
+  ;;
+esac
