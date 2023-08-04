@@ -18,9 +18,10 @@ cd ${__DIR__}
 apt update -y &&  apt install -y  sudo wget
 sudo apt install -y jq git unzip socat  ca-certificates  uuid uuid-runtime wget curl procps
 
-sudo apt install -y curl vim   tini libssl-dev  && \
+sudo apt install -y curl vim   tini libssl-dev
 sudo apt install -y  python3 python3-dev python3-pip unzip zip
-sudo pip3 install supervisor
+#sudo pip3 install supervisor
+sudo apt install -y supervisor
 sudo apt install -y xvfb libgles2-mesa libegl1-mesa
 sudo apt install -y iputils-ping net-tools dnsutils iproute2 procps iputils-ping lsof
 sudo apt install -y libgles2-mesa-dev libva-dev

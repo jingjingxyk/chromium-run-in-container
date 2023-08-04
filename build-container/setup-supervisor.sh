@@ -34,4 +34,3 @@ fi
 supervisorctl status
 supervisorctl update
 supervisorctl status
-tail -f /dev/null
