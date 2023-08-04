@@ -13,9 +13,7 @@ __DIR__=$(
 )
 cd ${__DIR__}
 
-redirect_domain=<<EOF
+cat >> /etc/hosts <<EOF
 127.0.0.1       update.googleapis.com   edgedl.me.gvt1.com      optimizationguide-pa.googleapis.com     safebrowsing.googleapis.com     edgedl.me.gvt1.com      accounts.google.com     r1---sn-npoe7nes.gvt1.com       r5---sn-npoe7nsd.gvt1.com       clients2.google.com     redirector.gvt1.com
 ::1             update.googleapis.com   edgedl.me.gvt1.com      optimizationguide-pa.googleapis.com     safebrowsing.googleapis.com     edgedl.me.gvt1.com      accounts.google.com     r1---sn-npoe7nes.gvt1.com       r5---sn-npoe7nsd.gvt1.com       clients2.google.com     redirector.gvt1.com
 EOF
-echo $redirect_domain
-#echo $redirect_domain >> /etc/hosts
