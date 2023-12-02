@@ -1,7 +1,7 @@
 FROM debian:12
 
 RUN test -f /etc/apt//etc/apt/sources.list.d/debian.sources.save || cp /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/debian.sources.save
-RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
+# RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 
 RUN apt update -y && apt install -y curl git tini  ca-certificates  uuid uuid-runtime wget  procps
 ENV DEBIAN_FRONTEND=noninteractive
